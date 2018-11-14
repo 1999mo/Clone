@@ -23,7 +23,7 @@ void ptrProdMat(int arr[][3], int arr1[][3], int array[][3]);
 
 int main(void)
 {
-	int mat[3][3], mat1[3][3], mat2[3][3];
+	int mat[3][3], mat1[3][3], mat2[3][3], mat3[3][3];
 	
 	scanf("%d %d %d", &mat[0][0], &mat[0][1], &mat[0][2]);
 	scanf("%d %d %d", &mat[1][0], &mat[1][1], &mat[1][2]);
@@ -45,12 +45,12 @@ int main(void)
 	printf("%d %d %d\n", mat2[1][0], mat2[1][1], mat2[1][2]);
 	printf("%d %d %d\n\n", mat2[2][0], mat2[2][1], mat2[2][2]);
 	
-	ptrProdMat(mat, mat1, mat2);
+
+	ptrProdMat(mat, mat1, mat3);
 	
-	printf("%d %d %d\n", mat2[0][0], mat2[0][1], mat2[0][2]);
-	printf("%d %d %d\n", mat2[1][0], mat2[1][1], mat2[1][2]);
-	printf("%d %d %d\n", mat2[2][0], mat2[2][1], mat2[2][2]);
-	
+	printf("%d %d %d\n", mat3[0][0], mat3[0][1], mat3[0][2]);
+	printf("%d %d %d\n", mat3[1][0], mat3[1][1], mat3[1][2]);
+	printf("%d %d %d\n", mat3[2][0], mat3[2][1], mat3[2][2]);
 	
 	//printf("test address 0 0, 0 1, 1 0 : %p %p %p", &mat2[0][0], &mat2[0][1], &mat2[1][0]);
 	//printf("test 2, %p", mat2);
@@ -78,21 +78,18 @@ void indexAddMat(int arr[][3], int arr1[][3], int array[][3])
 void ptrProdMat(int arr[][3], int arr1[][3], int array[][3])
 {
 	int i = 0, j = 0, k = 0;
-	int i4, j4, k4;
-	int i12, j12, k12;
 	
 	for(i = 0; i < 3; i++)
 	{
 		for(j = 0; j < 3; j++)
 		{
+			*(*(array+i)+j) = 0;
 			for(k = 0; k < 3; k ++)
 			{
-				i4 = i * 4, j4 = j * 4, k4 = k * 4;
-				i12 = i * 12, j12 = j * 12, k12 = k * 12;
 				//*((*array+j) + i) = arr[i][j] + arr1[i][j];
-				*((*array+j4)+i12) += (*((*arr+4*i)+12*k)) * (*(*arr1+4*k)+12*j);
-				//printf("array °ª i j k : %d %d %d %d\n", *((*array+j4)+i12), i, j, k);
-				//printf("°¢ °ª arr arr1: %d %d\n", (*((*arr+4*i)+12*k), (*(*arr1+4*k)+12*j));
+				//printf("%d\n", *(*(array+i)+j));
+				*(*(array+i)+j) += *(*(arr+i)+k) * *(*(arr1+k)+j);
+				//printf("i , j , array : %d %d %d\n", i, j, *(*(array+i)+j));
 			}
 		}
 	}
