@@ -91,7 +91,7 @@ void ptrProdMat(int arr[][3], int arr1[][3], int array[][3])
 				i12 = i * 12, j12 = j * 12, k12 = k * 12;
 				//*((*array+j) + i) = arr[i][j] + arr1[i][j];
 				*((*array+j4)+i12) += (*((*arr+4*i)+12*k)) * (*(*arr1+4*k)+12*j);
-				printf("array 값 i j k : %d %d %d %d\n", *((*array+j4)+i12), i, j, k);
+				//printf("array 값 i j k : %d %d %d %d\n", *((*array+j4)+i12), i, j, k);
 				//printf("각 값 arr arr1: %d %d\n", (*((*arr+4*i)+12*k), (*(*arr1+4*k)+12*j));
 			}
 		}
